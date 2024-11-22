@@ -20,7 +20,7 @@ import django_heroku
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-config = Config(RepositoryEnv('.env'))
+config = config(RepositoryEnv('.env'))
 # Quick-start development settings - unsuitable for production
 SECRET_KEY = config("DJANGO_SECRET_KEY")
 DEBUG = config("DJANGO_DEBUG", default=False, cast=bool)
