@@ -89,7 +89,7 @@ def delete_robot_type(request, pk):
 
 #LIST ALL ROBOT
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
+# @permission_classes([IsAuthenticated])
 def robot_list(request):
     robot_list = Robot.objects.all()
 

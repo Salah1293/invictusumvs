@@ -6,3 +6,4 @@ Thumbs.db
 .env
 staticfiles/
 media/
+error.log

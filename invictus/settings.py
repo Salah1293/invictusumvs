@@ -14,13 +14,12 @@ from pathlib import Path
 import os
 from datetime import timedelta
 import dj_database_url
-from decouple import config, RepositoryEnv
-import django_heroku
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-config = config(RepositoryEnv('.env'))
+
 # Quick-start development settings - unsuitable for production
 SECRET_KEY = config("DJANGO_SECRET_KEY")
 DEBUG = config("DJANGO_DEBUG", default=False, cast=bool)
@@ -33,7 +32,7 @@ CLOUDINARY_STORAGE = {
 }
 
 
-print("SECRET_KEY:", config("DJANGO_SECRET_KEY", default="NOT FOUND"))
+# print("SECRET_KEY:", config("DJANGO_SECRET_KEY", default="NOT FOUND"))
 # print("DEBUG:", config("DJANGO_DEBUG", default="NOT FOUND"))
 
 
@@ -116,13 +115,13 @@ SIMPLE_JWT = {
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     "whitenoise.middleware.WhiteNoiseMiddleware",
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'invictus.urls'
@@ -161,6 +160,7 @@ DATABASES = {
 }
 
 
+# print("DATABASES:", config("DATABASE_URL", default="NOT FOUND"))
 
 
 # Password validation
@@ -260,7 +260,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "https://invictusumvs.com",
     "https://www.invictusumvs.com",
+    "https://invictus-frontend-nu.vercel.app",
 ]
 
 
-django_heroku.settings(locals())
