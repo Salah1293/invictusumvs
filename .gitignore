@@ -7,3 +7,6 @@ Thumbs.db
 staticfiles/
 media/
 error.log
+
+__pycache__/
+*.pyc
